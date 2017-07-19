@@ -1,0 +1,12 @@
+<h1>Detail Page</h1>
+<p>you selected id: {{ place.id }}</p>
+<div>
+	<h4>Name: {{ place.name }}</h4>
+	<p>Types: {{ place.types }}</p>
+	<p>Rating: {{ place.rating }}</p>
+	<p>LatitudeL: {{ place.lat }}</p>
+	<p>Longitude: {{ place.lng }}</p>
+	<img ng-src= {{place.photos}} />
+</div>
+<p>{{ message }}</p>
+<p><button  ng-click="addToFavourites(id, place.name)">Add to Favourites</button></p>

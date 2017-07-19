@@ -1,0 +1,14 @@
+<h1 style="font-family:Lucida Calligraphy;font-size:38px;padding-bottom:20px;">Favourites Page</h1>
+
+<table>
+  
+  <tr ng-repeat="place in place">
+    <td>{{place.id}}</td>
+    <td>{{place.name}}</td>
+    <td><a  ng-click="delete(place.id)" href="">remove</a></td>
+  </tr>
+<span class="input-group-btn">
+    <button class="btn btn-primary"  ng-click="deleteAll()">Clear Favourites</button>
+</span>
+
+</table>
