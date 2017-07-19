@@ -1,4 +1,4 @@
-var books = require('./place.js')
+var places = require('./place.js')
 var restify = require('restify')
 var server = restify.createServer()
 
@@ -10,13 +10,13 @@ server.use(restify.authorizationParser())
 
 
 server.get('/search', function(req, res) {
-	const searchTerm = req.query.q
-  console.log('GET /search?q=' + searchTerm)
+	const searchPlace = req.query.q
+  console.log('GET /search?q=' + searchPlace)
 
   // this is where you access MongoDb
 
   // this is where you access the external API for data
-  places.search(searchTerm, function(data) {
+  places.search(searchPlace, function(data) {
     console.log('Responding...' + JSON.stringify(data))
     if(req.headers.origin) {
         res.header('Access-Control-Allow-Origin', req.headers.origin);
