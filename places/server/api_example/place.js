@@ -9,7 +9,7 @@ exports.search = function(query, callback) {
   }
 
   const url = 'https://www.googleapis.com/places/name&location&types&rating'
-  const query_string = {q: query, maxResults: 40, fields: 'items(id,volumeInfo(title,authors))'}
+  const query_string = {q: query, maxResults: 40, fields: 'items(id,name,geometry(location.lat(),location.lng()),types,rating)'}
   request.get({url: url, qs: query_string}, function(err, res, body) {	//body is a string
     if (err) {
     	console.log('Google Search failed')
@@ -20,7 +20,7 @@ exports.search = function(query, callback) {
     const items = json.items
     if (items){
 	    const places = items.map(function(element) {
-	      return {id:element.id, volumeInfo:{title:element.volumeInfo.title, authors:element.volumeInfo.authors}}
+	      return {id:element.id, volumeInfo:{name:element.name, lat:element.geometry.location.lat, lng:element.geometry.location.lng, types:element.types, rating:element.ratign}}
 	    })
 	    console.log(places.length +' places found')
 	    callback({code:200, response:{status:'success', message:books.length+' places found', data:books}})
