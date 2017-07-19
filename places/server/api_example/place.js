@@ -20,7 +20,7 @@ exports.search = function(query, callback) {
     const items = json.items
     if (items){
 	    const places = items.map(function(element) {
-	      return {id:element.id, volumeInfo:{name:element.name, lat:element.geometry.location.lat, lng:element.geometry.location.lng, types:element.types, rating:element.ratign}}
+	      return {id:element.id, name:element.name, geometry:{lat:element.geometry.location.lat, lng:element.geometry.location.lng}, types:element.types, rating:element.rating}
 	    })
 	    console.log(places.length +' places found')
 	    callback({code:200, response:{status:'success', message:books.length+' places found', data:books}})
